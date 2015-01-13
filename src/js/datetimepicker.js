@@ -105,7 +105,7 @@
       return {
         restrict: 'E',
         require: 'ngModel',
-        template: '<div class="datetimepicker table-responsive">' +
+        template: '<div class="datetimepicker table-responsive" data-ng-click="changeView(data.currentView, null, $event)">' +
         '<table class="table table-striped  {{ data.currentView }}-view">' +
         '   <thead>' +
         '       <tr>' +

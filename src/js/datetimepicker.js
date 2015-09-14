@@ -94,9 +94,9 @@
         }
 
         /* istanbul ignore next */
-        if (configuration.dropdownSelector !== null && ((typeof jQuery === 'undefined') || (typeof jQuery().dropdown !== 'function'))) {
-          $log.error('Please DO NOT specify the dropdownSelector option unless you are using jQuery AND Bootstrap.js. ' +
-          'Please include jQuery AND Bootstrap.js, or write code to close the dropdown in the on-set-time callback. \n\n' +
+        if (configuration.dropdownSelector !== null && typeof jQuery === 'undefined') {
+          $log.error('Please DO NOT specify the dropdownSelector option unless you are using jQuery. ' +
+          'Please include jQuery, or write code to close the dropdown in the on-set-time callback. \n\n' +
           'The dropdownSelector configuration option is being removed because it will not function properly.');
           delete configuration.dropdownSelector;
         }
@@ -354,7 +354,7 @@
               ngModelController.$setViewValue(newDate);
 
               if (configuration.dropdownSelector) {
-                jQuery(configuration.dropdownSelector).dropdown('toggle');
+                jQuery(configuration.dropdownSelector).parent().removeClass('open');
               }
 
               scope.onSetTime({newDate: newDate, oldDate: oldDate});
